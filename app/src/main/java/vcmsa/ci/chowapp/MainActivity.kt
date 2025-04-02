@@ -19,32 +19,25 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.actvity_main)
 
         //Initialize UI elements
+        inputTime = findViewById(R.id.input_time)
+        btnSuggest = findViewById(R.id.btn_suggest)
+        txtSuggestion = findViewById(R.id.txt_suggestion)
 
-
-            ChowAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        // Set button click listener
+        btnSuggest.setOnClickListener {
+            val timeOfDay = inputTime.text.toString().trim().lowercase()
+            txtSuggestion.text = suggestMeal(timeOfDay)
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ChowAppTheme {
-        Greeting("Android")
+    //function to determine meal suggestion based on time of day
+    private fun suggestMeal(time: String): String {
+        return when (time) {
+            "morning" -> "Breakfast suggestion: Pancakes or Omlette"
+            "mid-morning" -> "Light snack: Fruit or Yogurt"
+            "afternoon" -> "Lunch suggestion: Sandwich or Salad"
+            "dinner" -> "Dinner suggestion:Pasta or Grilled Chicken"
+            else -> "Invalid input. Please enter a valid time of the day"
+        }
     }
 }

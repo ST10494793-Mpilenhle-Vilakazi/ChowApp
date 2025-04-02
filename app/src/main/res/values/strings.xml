@@ -4,5 +4,5 @@
     <string name="txt_title">Welcome</string>
     <string name="suggested_meal">Suggested Meal: %1$s</string>
     <string name="e_g_9_for_9am">e.g., 9 for 9AM</string>
-    <string name="app_name">MealApp</string>
+    <string name="app_name">ChowApp</string>
 </resources>
